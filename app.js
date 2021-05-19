@@ -6,7 +6,7 @@ const AutoLoad = require('fastify-autoload')
 module.exports = function (fastify, opts, next) {
   fastify
     .register(require('fastify-mongodb'), {
-      url: 'mongodb://localhost/todo',
+      url: process.env.MONGO_URL || 'mongodb://localhost/todo',
       ...opts.mongo
     })
     .register(require('fastify-cors'))
